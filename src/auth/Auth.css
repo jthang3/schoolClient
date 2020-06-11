@@ -1,0 +1,15 @@
+select{
+    width: 15%;
+}
+
+.authForm{
+    width: 40%;
+    margin:auto;
+}
+.container{
+    width: 90%;
+    margin:auto;
+}
+.dropdown{
+    text-align: center;
+}
