@@ -7,7 +7,7 @@ function App() {
   const [sessionToken,setSessionToken] = useState("");
 
   useEffect(()=>{
-    if(localStorage.getItem("token" != undefined || localStorage.getItem("token"!== ""))){
+    if(localStorage.getItem("token" !== undefined || localStorage.getItem("token"!== ""))){
       setSessionToken(localStorage.getItem("token"));
     }
   },[])

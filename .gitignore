@@ -10,7 +10,8 @@
 
 # production
 /build
-
+##need this to deploy. we need to take this out if we are using React DOM.
+/static.json
 # misc
 .DS_Store
 .env.local

@@ -29,7 +29,7 @@ const Auth = (props)=>{
         )
     }
     const protectView = ()=>{
-        if(option == "1"){
+        if(option === "1"){
             return(
                 <AdvisorSignUp updateToken = {props.updateToken}/>
             )
