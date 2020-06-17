@@ -10,6 +10,9 @@ switch(window.location.hostname){
      case "jl-schoolserver.herokuapp.com":
          //this is the full url of my deployed server/API
         APIURL = "https://jl-schoolserver.herokuapp.com";
+        break;
+    default:
+        console.log("Not working");
 
 }
 

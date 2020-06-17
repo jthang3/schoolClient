@@ -1,5 +1,15 @@
-
+body{
+  background-color: black;
+}
 
 #code{
   text-align: center;
+  color:white;
+}
+#bttn1:hover{
+  color:white;
+}
+
+.MuiButton-label a{
+  color:white !important;
 }

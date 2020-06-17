@@ -5,11 +5,20 @@ select{
 .authForm{
     width: 40%;
     margin:auto;
+    color:white;
 }
 .container{
     width: 90%;
     margin:auto;
+    margin-top: 0.5%;
+    color:white;
 }
 .dropdown{
+    text-align: center;
+}
+.myBtn{
+    width: 100%;
+}
+.account{
     text-align: center;
 }

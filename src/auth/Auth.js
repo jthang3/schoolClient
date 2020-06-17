@@ -1,49 +1,27 @@
-import React,{useState} from "react";
-import {Row,Dropdown,DropdownToggle,DropdownMenu,DropdownItem} from "reactstrap";
+import React from "react";
+import {Route,Switch} from "react-router-dom";
 import "../auth/Auth.css";
+import {Row} from "reactstrap";
 import StudentSignUp from "../auth/StudentSIgnUp";
 import AdvisorSignUp from "../auth/AdvisorSignUp";
+import Login from "../auth/Login";
 
 
 
 const Auth = (props)=>{
-    const [option,setOption] = useState("1");
-    const [dropdownOpen,setDropdownOpen] = useState(false);
-    const option1 = ()=>{
-        setOption("1");
-    }
-    const option2 =()=>{
-        setOption("2");
-    }
-    const result = ()=>{
+    
+    const protectView = ()=>{
         return(
-            <Dropdown className = "container" isOpen={dropdownOpen} toggle={toggle}>
-                <DropdownToggle caret>
-                    sign up as
-                </DropdownToggle>
-                <DropdownMenu>
-                    <DropdownItem className = "options"onClick = {option1}>Advisor</DropdownItem>
-                    <DropdownItem onClick = {option2}>Student</DropdownItem>
-                </DropdownMenu>
-             </Dropdown>
+            <Switch>
+                <Route exact path = "/"><AdvisorSignUp updatePerson = {props.updatePerson} updateDisplay = {props.updateDisplay} updateLog = {props.updateLog} updateToken = {props.updateToken}/></Route>
+                <Route exact path = "/advisor"><AdvisorSignUp updatePerson = {props.updatePerson} home = {props.home} updateDisplay = {props.updateDisplay} updateLog = {props.updateLog} updateToken = {props.updateToken}/></Route>
+                <Route exact path = "/student"><StudentSignUp updatePerson = {props.updatePerson} home = {props.home} updateDisplay = {props.updateDisplay} updateLog = {props.updateLog} updateToken = {props.updateToken}/></Route>
+                <Route exact path = "/Login1"><Login home = {props.home} updateDisplay = {props.updateDisplay} updateToken = {props.updateToken} updateLog = {props.updateLog}/></Route>
+            </Switch>
         )
     }
-    const protectView = ()=>{
-        if(option === "1"){
-            return(
-                <AdvisorSignUp updateToken = {props.updateToken}/>
-            )
-        }
-        else{
-            return(
-                <StudentSignUp updateToken = {props.updateToken}/>
-            )
-        }
-    }
-    const toggle = ()=>setDropdownOpen(prevState=>!prevState);
     return(
         <div className = "container">
-            <Row>{result()}</Row>
             <Row>{protectView()}</Row>
         </div>
     );

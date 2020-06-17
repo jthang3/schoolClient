@@ -1,5 +1,9 @@
 import React,{useState} from "react";
 import {Form,FormGroup,Label,Input,Button} from "reactstrap";
+import {
+    Link
+} from "react-router-dom";
+import {Row,Dropdown,DropdownToggle,DropdownMenu,DropdownItem} from "reactstrap";
 import APIURL from "../helpers/environment";
 
 const Signup = (props)=>{
@@ -11,10 +15,26 @@ const Signup = (props)=>{
     const [secondPasswordMatch,setSecondPasswordMatch] = useState("");
     const [passwordResult,setPasswordResult] = useState("");
     const [match,setMatch] = useState("");
+    const [dropdownOpen,setDropdownOpen] = useState(false);
+    props.updatePerson("student");
+    props.updateLog("LOGIN");
+    const result = ()=>{
+        return(
+            <Dropdown className = "container" isOpen={dropdownOpen} toggle={toggle}>
+                <DropdownToggle caret>
+                    sign up as
+                </DropdownToggle>
+                <DropdownMenu>
+                    <DropdownItem className = "options"><Link to = "/advisor">Advisor</Link></DropdownItem>
+                    <DropdownItem className = "options"><Link to = "/student">Student</Link></DropdownItem>
+                </DropdownMenu>
+             </Dropdown>
+        )
+    }
     const handleSubmit = (e)=>{
         e.preventDefault();
         if(!username){
-            setMessage("User name must be provided!");
+            setMessage("Username must be provided!");
         }
         else{
             setMessage("");
@@ -44,7 +64,6 @@ const Signup = (props)=>{
 
                      setPasswordResult("");
                     let i = 0;
-                    let j = 0;
                     while(i < password.length){
                         if(password[i] === '!' || password[i] === '@' || password[i] === "#"){
                             //setPasswordResult("Your password must included at least one of !,@,or #");
@@ -59,8 +78,25 @@ const Signup = (props)=>{
                                     return data.json();
                                 })
                                 .then(json=>{
-                                    props.updateToken(json.sessionToken);
+                                    fetch(`${APIURL}/advLog/advisorInfo`,{
+                                        method:"GET",
+                                        headers: new Headers({
+                                            "Content-Type": "application/json",
+                                            "Authorization":json.sessionToken
+                                        })
+                                    })
+                                    .then(data=>{
+                                        return data.json();
+                                    })
+                                    .then(mydata=>{
+                                        //console.log(mydata.data.length);
+                                       props.updateDisplay(mydata.data.length)
+                                       props.updateToken(json.sessionToken);
+                                    })
+
                                 })
+                                
+                                
 
                             i = password.length+1;
                         }
@@ -82,14 +118,16 @@ const Signup = (props)=>{
          }
         }
     }
+    const toggle = ()=>setDropdownOpen(prevState=>!prevState);
     return(
         <div className = "authForm">
           <div>
+            <Row>{result()}</Row>
             <h4>Student Sign up</h4>
             <Form onSubmit = {handleSubmit}autoComplete="off">
                 <FormGroup>
                     <Label htmlFor = "username">Username</Label>
-                    <Input name = "username" value = {username} onChange = {e=>setUsername(e.target.value)}type = "text"/>
+                    <Input name = "username" value = {username} onChange = {e=>setUsername(e.target.value)} type = "text"/>
                     {message}<br/>
                     <Label htmlFor = "password">Password</Label>
                     <Input name = "password" value = {password} onChange = {e=>setPassword(e.target.value)}type = "password"/>
@@ -100,7 +138,10 @@ const Signup = (props)=>{
                     {passwordResult}
                     {match}
                 </FormGroup>
-                <Button type = "submit">Sign up</Button>
+                    <Button className = "myBtn"type = "submit">SIGN UP</Button>
+                <br/><br/>
+                <p className = "account">Already have an account <Link to ="/Login1">Log in</Link></p>
+              
             </Form>
         </div>
         </div>
