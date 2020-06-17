@@ -79,7 +79,8 @@ const Signup = (props)=>{
                                 })
                                 .then(json=>{
                                     console.log(json);
-                                    fetch(`${APIURL}/advLog/advisorInfo`,{
+                                    //fetching happening too quickly for heroku to keep up. 
+                                    return fetch(`${APIURL}/advLog/advisorInfo`,{
                                         method:"GET",
                                         headers: new Headers({
                                             "Content-Type": "application/json",
