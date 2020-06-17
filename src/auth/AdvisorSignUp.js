@@ -78,6 +78,7 @@ const Signup = (props)=>{
                                     return data.json();
                                 })
                                 .then(json=>{
+                                    console.log(json);
                                     fetch(`${APIURL}/advLog/advisorInfo`,{
                                         method:"GET",
                                         headers: new Headers({
