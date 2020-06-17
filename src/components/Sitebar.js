@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 const SiteBar = (props)=>{
-    const classes = useStyles();
+    //const classes = useStyles();
     return(
         <div>
             <div className = "sidebar-list-styling">

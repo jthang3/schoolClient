@@ -15,22 +15,22 @@ const Signup = (props)=>{
     const [secondPasswordMatch,setSecondPasswordMatch] = useState("");
     const [passwordResult,setPasswordResult] = useState("");
     const [match,setMatch] = useState("");
-    const [dropdownOpen,setDropdownOpen] = useState(false);
+    //const [dropdownOpen,setDropdownOpen] = useState(false);
     props.updateLog("LOGIN");
     props.updatePerson("");
-    const result = ()=>{
-        return(
-            <Dropdown className = "container" isOpen={dropdownOpen} toggle={toggle}>
-                <DropdownToggle caret>
-                    sign up as
-                </DropdownToggle>
-                <DropdownMenu>
-                    <DropdownItem className = "options"><Link to = "/advisor">Advisor</Link></DropdownItem>
-                    <DropdownItem className = "options"><Link to = "/student">Student</Link></DropdownItem>
-                </DropdownMenu>
-             </Dropdown>
-        )
-    }
+    // const result = ()=>{
+    //     return(
+    //         <Dropdown className = "container" isOpen={dropdownOpen} toggle={toggle}>
+    //             <DropdownToggle caret>
+    //                 sign up as
+    //             </DropdownToggle>
+    //             <DropdownMenu>
+    //                 <DropdownItem className = "options"><Link to = "/advisor">Advisor</Link></DropdownItem>
+    //                 <DropdownItem className = "options"><Link to = "/student">Student</Link></DropdownItem>
+    //             </DropdownMenu>
+    //          </Dropdown>
+    //     )
+    // }
     const handleSubmit = (e)=>{
         e.preventDefault();
         if(!username){
@@ -118,11 +118,11 @@ const Signup = (props)=>{
          }
         }
     }
-    const toggle = ()=>setDropdownOpen(prevState=>!prevState);
+    // const toggle = ()=>setDropdownOpen(prevState=>!prevState);
     return(
         <div className = "authForm">
           <div>
-            <Row>{result()}</Row>
+            {/* <Row>{result()}</Row> */}
             <h4>Advisor Sign up</h4>
             <Form onSubmit = {handleSubmit}autoComplete="off">
                 <FormGroup>
