@@ -10,7 +10,6 @@ import Sitebar from "../components/Sitebar";
      const [email,setEmail] = useState("");
      const [message,setMessage] = useState("");
     props.updateLog("LOGOUT");
-    
         if(props.display === 0){
             console.log("What is this number going to be");
             const handleSubmit = (e) => {
@@ -67,7 +66,7 @@ import Sitebar from "../components/Sitebar";
         else{
             return(
                 <div>
-                    {<Sitebar person = {props.person} sessionToken = {props.sessionToken}/>}
+                    {<Sitebar user = {props.home} person = {props.person}sessionToken = {props.sessionToken}/>}
                 </div>
             )
         }

@@ -78,9 +78,9 @@ const Signup = (props)=>{
                                     return data.json();
                                 })
                                 .then(json=>{
-                                    console.log(json);
+                                    localStorage.setItem("token",json.sessionToken);
                                     //fetching happening too quickly for heroku to keep up. 
-                                    return fetch(`${APIURL}/advLog/advisorInfo`,{
+                                    fetch(`${APIURL}/advLog/advisorInfo`,{
                                         method:"GET",
                                         headers: new Headers({
                                             "Content-Type": "application/json",
