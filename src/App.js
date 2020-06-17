@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react';
 import "bootstrap/dist/css/bootstrap.css";
 import './App.css';
 import Auth from "./auth/Auth"
-import Header from "./components/Navigation";
+import Header from "./Navigation";
 import {BrowserRouter as Router} from "react-router-dom";
 import AdvisorSignUpForm from "./auth/AdvisorSignUpForm";
 import StudentSignUpForm from "./components/Student/StudentSignUpForm";
