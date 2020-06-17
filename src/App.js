@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react';
 import "bootstrap/dist/css/bootstrap.css";
 import './App.css';
 import Auth from "./auth/Auth"
-import Header from "./components/Navigation";
+//import Header from "./components/Navigation";
 import {BrowserRouter as Router} from "react-router-dom";
 import AdvisorSignUpForm from "./auth/AdvisorSignUpForm";
 import StudentSignUpForm from "./components/Student/StudentSignUpForm";
@@ -77,7 +77,7 @@ function App() {
   return (
     <div className = "centerMe">
       <Router>
-        <Header clearToken = {clearToken} user = {user}log = {login} updateLog = {updateLog}/>
+        {/* <Header clearToken = {clearToken} user = {user}log = {login} updateLog = {updateLog}/> */}
         <h1 id = "code">Coding bootcamp</h1>
         {updatedView()}
       </Router>
