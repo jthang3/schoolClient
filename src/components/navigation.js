@@ -52,7 +52,7 @@ const Header = (props)=>{
             <Link className = {classes.bttn} id = "bttn1" to = "/">{props.user}</Link>
           </IconButton>
           </Typography>
-        <Button color="inherit"><Link to = "/">{logChange()}</Link></Button>
+        <Button color="inherit">{logChange()}</Button>
         </Toolbar>
       </AppBar>
     </div>
