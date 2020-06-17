@@ -5,6 +5,7 @@ import Auth from "./auth/Auth"
 import Header from "./Navigation";
 import {BrowserRouter as Router} from "react-router-dom";
 import AdvisorSignUpForm from "./auth/AdvisorSignUpForm";
+import APIURL from "./helpers/environment";
 //import StudentSignUpForm from "./components/Student/StudentSignUpForm";
 function App() {
   const [sessionToken,setSessionToken] = useState("");
@@ -44,6 +45,20 @@ function App() {
   const updateToke = (newToken)=>{
     localStorage.setItem("token",newToken);
     setSessionToken(newToken);
+    //fetching happening too quickly for heroku to keep up. 
+                                    fetch(`${APIURL}/advLog/advisorInfo`,{
+                                        method:"GET",
+                                        headers: new Headers({
+                                            "Content-Type": "application/json",
+                                            "Authorization":newToken
+                                        })
+                                    })
+                                    .then(data=>{
+                                        return data.json();
+                                    })
+                                    .then(mydata=>{
+                                    updateDisplay(mydata.data.length)
+                                    })
   }
   const updateDisplay = (self) =>{
     setDisplay(self);

@@ -78,23 +78,24 @@ const Signup = (props)=>{
                                     return data.json();
                                 })
                                 .then(json=>{
-                                    localStorage.setItem("token",json.sessionToken);
-                                    //fetching happening too quickly for heroku to keep up. 
-                                    fetch(`${APIURL}/advLog/advisorInfo`,{
-                                        method:"GET",
-                                        headers: new Headers({
-                                            "Content-Type": "application/json",
-                                            "Authorization":json.sessionToken
-                                        })
-                                    })
-                                    .then(data=>{
-                                        return data.json();
-                                    })
-                                    .then(mydata=>{
-                                        //console.log(mydata.data.length);
-                                       props.updateDisplay(mydata.data.length)
-                                       props.updateToken(json.sessionToken);
-                                    })
+                                    props.updateToken(json.sessionToken);
+                                    // localStorage.setItem("token",json.sessionToken);
+                                    // //fetching happening too quickly for heroku to keep up. 
+                                    // fetch(`${APIURL}/advLog/advisorInfo`,{
+                                    //     method:"GET",
+                                    //     headers: new Headers({
+                                    //         "Content-Type": "application/json",
+                                    //         "Authorization":json.sessionToken
+                                    //     })
+                                    // })
+                                    // .then(data=>{
+                                    //     return data.json();
+                                    // })
+                                    // .then(mydata=>{
+                                    //     //console.log(mydata.data.length);
+                                    //    props.updateDisplay(mydata.data.length)
+                                    //    props.updateToken(json.sessionToken);
+                                    // })
 
                                 })
                                 
