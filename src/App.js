@@ -5,7 +5,7 @@ import Auth from "./auth/Auth"
 import Header from "./Navigation";
 import {BrowserRouter as Router} from "react-router-dom";
 import AdvisorSignUpForm from "./auth/AdvisorSignUpForm";
-import StudentSignUpForm from "./components/Student/StudentSignUpForm";
+//import StudentSignUpForm from "./components/Student/StudentSignUpForm";
 function App() {
   const [sessionToken,setSessionToken] = useState("");
   const [user,setUser] = useState("HOME");
@@ -53,16 +53,11 @@ function App() {
     const showReturn = ()=>{
     if(sessionToken === localStorage.getItem("token")){
       //setLogin("LOGOUT");
-      if(person){
-        return(
-          <StudentSignUpForm person = {person} home = {user} updateUser = {updateUser} updateDisplay = {updateDisplay} display = {display} updateLog = {updateLog} updateToken = {updateToke} sessionToken = {sessionToken}/>
-          )
-      }
-      else{
+  
         return(
           <AdvisorSignUpForm person = {person} home = {user} updateUser = {updateUser} updateDisplay = {updateDisplay} display = {display} updateLog = {updateLog} updateToken = {updateToke} sessionToken = {sessionToken}/>
           )
-      }
+      
     }
     else{
       return(
