@@ -10,6 +10,7 @@ const AdvisorTable = (props) =>{
             return (myAdvisor.map((advisor,index)=>{
                 return(
                     <tr key = {index}>
+                        <td>{advisor.id}</td>
                         <td>{advisor.FirstName}</td>
                         <td>{advisor.LastName}</td>
                         <td>{advisor.email}</td>
@@ -36,6 +37,7 @@ const AdvisorTable = (props) =>{
             <Table striped>
                 <thead>
                     <tr>
+                        <th>#</th>
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Email</th>

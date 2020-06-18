@@ -6,6 +6,7 @@ const Login = (props)=>{
     const [username,setUsername] = useState("");
     const [password,setPassword] = useState("");
     const [message,setMessage] = useState("");
+    props.updatePerson("advisor");
     const handleSubmit = (e) => {
         e.preventDefault();
         if(username === "" || password === ""){

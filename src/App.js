@@ -19,6 +19,10 @@ function App() {
     }
   },[])
 
+  //checking advisor or students
+  const updatePerson = (person)=>{
+    setPerson(person);
+  }
 
   //log out
   const clearToken = ()=>{
@@ -59,7 +63,7 @@ function App() {
     }
     else{
       return(
-        <Auth updatePerson = {setPerson} home = {updateUser} updateDisplay = {updateDisplay} updateLog = {updateLog} updateToken = {updateToke}/>
+        <Auth updatePerson = {updatePerson} home = {updateUser} updateDisplay = {updateDisplay} updateLog = {updateLog} updateToken = {updateToke}/>
       );
     }
   }
