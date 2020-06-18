@@ -9,8 +9,28 @@ import Sitebar from "../components/Sitebar";
      const [lastName,setLastName] = useState("");
      const [email,setEmail] = useState("");
      const [message,setMessage] = useState("");
+     const [length,setLength] = useState(0);
+     const protectedView = ()=>{
+
+         fetch(`${APIURL}/advLog/advisorInfo`,{
+            method:"GET",
+            headers: new Headers({
+                "Content-Type": "application/json",
+                "Authorization":props.sessionToken
+            })
+        })
+        .then(data=>{
+            return data.json();
+        })
+        .then(mydata=>{
+            setLength(mydata.data.length);
+          
+        })
+     }
+     protectedView();
+     console.log("THis is th length of name",length);
     props.updateLog("LOGOUT");
-        if(props.display === 0){
+        if(length === 0){
             const handleSubmit = (e) => {
                 e.preventDefault();
                 if(!firstName){

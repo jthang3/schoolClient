@@ -53,19 +53,9 @@ function App() {
     //return(sessionToken === localStorage.getItem("token")?null: <Auth updateLog = {updateLog} updateToken = {updateToke}/>)
     const showReturn = ()=>{
     if(sessionToken === localStorage.getItem("token")){
-      if(display === undefined){
-        console.log("What is this going to display");
-        return(
-        <DisplayMe updateLog = {updateLog} updateDisplay = {updateDisplay} updateToken = {updateToke} sessionToken = {sessionToken}/>
-        )
-      }
-      // }
-      else{
-
         return(
           <AdvisorSignUpForm person = {person} home = {user} updateUser = {updateUser} updateDisplay = {updateDisplay} display = {display} updateLog = {updateLog} updateToken = {updateToke} sessionToken = {sessionToken}/>
           )
-      }
       
     }
     else{
