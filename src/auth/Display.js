@@ -16,6 +16,7 @@ const DisplayMe = (props)=>{
             return data.json();
         })
         .then(mydata=>{
+            console.log("Asshole this is inside this fucking asshole route");
             props.updateDisplay(mydata.data.length);
             props.updateToken(props.sessionToken);
           
