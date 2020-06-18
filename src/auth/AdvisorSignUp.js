@@ -3,7 +3,6 @@ import {Form,FormGroup,Label,Input,Button} from "reactstrap";
 import {
     Link
 } from "react-router-dom";
-import {Row,Dropdown,DropdownToggle,DropdownMenu,DropdownItem} from "reactstrap";
 import APIURL from "../helpers/environment";
 
 const Signup = (props)=>{

@@ -23,6 +23,7 @@ import Sitebar from "../components/Sitebar";
                 !lastName?setMessage("Last name must be provided"):setMessage("");
                 !email?setMessage("Email must be provided"):setMessage("");
                 if(firstName && lastName && email){
+                console.log("This is fucking asshole");
                 fetch(`${APIURL}/advLog/advisor`,{
                     method:"POST",
                     body:JSON.stringify({user:{first:firstName,last:lastName,email:email}}),
@@ -33,6 +34,7 @@ import Sitebar from "../components/Sitebar";
                 })
                 .then(data=>data.json())
                 .then(json=>{
+                    console.log("Mother fucker");
                     props.updateUser(firstName);
                     props.updateDisplay(json.data.length);
                     props.updateToken(props.sessionToken);
