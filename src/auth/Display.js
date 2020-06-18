@@ -16,8 +16,8 @@ const DisplayMe = (props)=>{
             return data.json();
         })
         .then(mydata=>{
-            props.updateDisplay(mydata.data.length)
-            props.updateToken()
+            props.updateDisplay(mydata.data.length);
+            props.updateToken(props.sessionToken);
           
         })
 }
