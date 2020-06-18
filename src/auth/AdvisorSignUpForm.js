@@ -11,7 +11,6 @@ import Sitebar from "../components/Sitebar";
      const [message,setMessage] = useState("");
     props.updateLog("LOGOUT");
         if(props.display === 0){
-            console.log("What is this number going to be");
             const handleSubmit = (e) => {
                 e.preventDefault();
                 if(!firstName){

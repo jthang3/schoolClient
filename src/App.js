@@ -5,13 +5,13 @@ import Auth from "./auth/Auth"
 import Header from "./Navigation";
 import {BrowserRouter as Router} from "react-router-dom";
 import AdvisorSignUpForm from "./auth/AdvisorSignUpForm";
-import APIURL from "./helpers/environment";
+import DisplayMe from "./auth/Display";
 //import StudentSignUpForm from "./components/Student/StudentSignUpForm";
 function App() {
   const [sessionToken,setSessionToken] = useState("");
   const [user,setUser] = useState("HOME");
   const [login,setLogin] = useState("LOGIN");
-  const [display,setDisplay] = useState(1);
+  const [display,setDisplay] = useState(undefined);
   const [person,setPerson] = useState("");
 
   useEffect(()=>{
@@ -45,20 +45,6 @@ function App() {
   const updateToke = (newToken)=>{
     localStorage.setItem("token",newToken);
     setSessionToken(newToken);
-    //fetching happening too quickly for heroku to keep up. 
-                                    fetch(`${APIURL}/advLog/advisorInfo`,{
-                                        method:"GET",
-                                        headers: new Headers({
-                                            "Content-Type": "application/json",
-                                            "Authorization":newToken
-                                        })
-                                    })
-                                    .then(data=>{
-                                        return data.json();
-                                    })
-                                    .then(mydata=>{
-                                    updateDisplay(mydata.data.length)
-                                    })
   }
   const updateDisplay = (self) =>{
     setDisplay(self);
@@ -67,11 +53,18 @@ function App() {
     //return(sessionToken === localStorage.getItem("token")?null: <Auth updateLog = {updateLog} updateToken = {updateToke}/>)
     const showReturn = ()=>{
     if(sessionToken === localStorage.getItem("token")){
-      //setLogin("LOGOUT");
-  
+      if(display === undefined){
+        return(
+        <DisplayMe updateLog = {updateLog} updateDisplay = {updateDisplay} updateToken = {updateToke} sessionToken = {sessionToken}/>
+        )
+      }
+      // }
+      else{
+
         return(
           <AdvisorSignUpForm person = {person} home = {user} updateUser = {updateUser} updateDisplay = {updateDisplay} display = {display} updateLog = {updateLog} updateToken = {updateToke} sessionToken = {sessionToken}/>
           )
+      }
       
     }
     else{
