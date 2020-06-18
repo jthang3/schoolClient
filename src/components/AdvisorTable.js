@@ -10,7 +10,7 @@ const AdvisorTable = (props) =>{
             return (myAdvisor.map((advisor,index)=>{
                 return(
                     <tr key = {index}>
-                        <td>{advisor.id}</td>
+                        <td>{advisor.owner_id}</td>
                         <td>{advisor.FirstName}</td>
                         <td>{advisor.LastName}</td>
                         <td>{advisor.email}</td>

@@ -1,5 +1,5 @@
 import React,{useState} from "react";
-import {Button,Form,FormGroup,Label,Input,FormText} from "reactstrap";
+import {Button,Form,FormGroup,Label,Input} from "reactstrap";
 import APIURL from "../helpers/environment";
 import Sitebar from "../components/Sitebar";
 
@@ -20,6 +20,7 @@ import Sitebar from "../components/Sitebar";
      const [advMessage,setAdvMessage] = useState("");
      const [myclassMessage,SetMyclassMessage] = useState();
     props.updateLog("LOGOUT");
+        console.log(props.display);
         if(props.display === 0){
             if(props.person === "advisor"){
 
