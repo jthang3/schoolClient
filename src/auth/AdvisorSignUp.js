@@ -67,41 +67,7 @@ const Signup = (props)=>{
                     while(i < password.length){
                         if(password[i] === '!' || password[i] === '@' || password[i] === "#"){
                             //setPasswordResult("Your password must included at least one of !,@,or #");
-                            fetch(`${APIURL}/user/advisorSignup`,{
-                                method: "POST",
-                                body:JSON.stringify({user:{username:username,password:password}}),
-                                headers: new Headers({
-                                    "Content-Type": "application/json"
-                                })
-                            })
-                                .then(data=>{
-                                    return data.json();
-                                })
-                                .then(json=>{
-                                    props.updateToken(json.sessionToken);
-                                    // localStorage.setItem("token",json.sessionToken);
-                                    // //fetching happening too quickly for heroku to keep up. 
-                                    // fetch(`${APIURL}/advLog/advisorInfo`,{
-                                    //     method:"GET",
-                                    //     headers: new Headers({
-                                    //         "Content-Type": "application/json",
-                                    //         "Authorization":json.sessionToken
-                                    //     })
-                                    // })
-                                    // .then(data=>{
-                                    //     return data.json();
-                                    // })
-                                    // .then(mydata=>{
-                                    //     //console.log(mydata.data.length);
-                                    //    props.updateDisplay(mydata.data.length)
-                                    //    props.updateToken(json.sessionToken);
-                                    // })
-
-                                })
-                                
-                                
-
-                            i = password.length+1;
+                                i = password.length+1;
                         }
                         else{
                             i ++
@@ -110,6 +76,39 @@ const Signup = (props)=>{
                     }
                     if(i === password.length){
                         setPasswordResult("Your password must included at least one of !,@,or #");
+                    }
+                    else{
+                        fetch(`${APIURL}/user/advisorSignup`,{
+                            method: "POST",
+                            body:JSON.stringify({user:{username:username,password:password}}),
+                            headers: new Headers({
+                                "Content-Type": "application/json"
+                            })
+                        })
+                            .then(data=>{
+                                return data.json();
+                            })
+                            .then(json=>{
+                                props.updateToken(json.sessionToken);
+                                // localStorage.setItem("token",json.sessionToken);
+                                // //fetching happening too quickly for heroku to keep up. 
+                                // fetch(`${APIURL}/advLog/advisorInfo`,{
+                                //     method:"GET",
+                                //     headers: new Headers({
+                                //         "Content-Type": "application/json",
+                                //         "Authorization":json.sessionToken
+                                //     })
+                                // })
+                                // .then(data=>{
+                                //     return data.json();
+                                // })
+                                // .then(mydata=>{
+                                //     //console.log(mydata.data.length);
+                                //    props.updateDisplay(mydata.data.length)
+                                //    props.updateToken(json.sessionToken);
+                                // })
+                
+                            })
                     }
                  }
              }
