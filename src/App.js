@@ -10,7 +10,7 @@ function App() {
   const [sessionToken,setSessionToken] = useState("");
   const [user,setUser] = useState("HOME");
   const [login,setLogin] = useState("LOGIN");
-  const [display,setDisplay] = useState(0);
+  const [display,setDisplay] = useState();
   const [person,setPerson] = useState("");
 
   useEffect(()=>{

@@ -13,7 +13,7 @@ const Auth = (props)=>{
     const protectView = ()=>{
         return(
             <Switch>
-                <Route exact path = "/"><AdvisorSignUp updatePerson = {props.updatePerson} updateDisplay = {props.updateDisplay} updateLog = {props.updateLog} updateToken = {props.updateToken}/></Route>
+                <Route exact path = "/"><AdvisorSignUp updatePerson = {props.updatePerson} home = {props.home} updateDisplay = {props.updateDisplay} updateLog = {props.updateLog} updateToken = {props.updateToken}/></Route>
                 <Route exact path = "/advisor"><AdvisorSignUp updatePerson = {props.updatePerson} home = {props.home} updateDisplay = {props.updateDisplay} updateLog = {props.updateLog} updateToken = {props.updateToken}/></Route>
                 {/* <Route exact path = "/student"><StudentSignUp updatePerson = {props.updatePerson} home = {props.home} updateDisplay = {props.updateDisplay} updateLog = {props.updateLog} updateToken = {props.updateToken}/></Route> */}
                 <Route exact path = "/Login1"><Login home = {props.home} updateDisplay = {props.updateDisplay} updateToken = {props.updateToken} updateLog = {props.updateLog}/></Route>

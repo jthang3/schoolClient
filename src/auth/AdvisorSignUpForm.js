@@ -34,7 +34,6 @@ import Sitebar from "../components/Sitebar";
                 })
                 .then(data=>data.json())
                 .then(json=>{
-                    console.log("Mother fucker");
                     props.updateUser(firstName);
                     props.updateDisplay(json.data.length);
                     props.updateToken(props.sessionToken);

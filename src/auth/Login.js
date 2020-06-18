@@ -6,7 +6,6 @@ const Login = (props)=>{
     const [username,setUsername] = useState("");
     const [password,setPassword] = useState("");
     const [message,setMessage] = useState("");
-    props.updateDisplay(1);
     const handleSubmit = (e) => {
         e.preventDefault();
         if(username === "" || password === ""){
@@ -23,27 +22,24 @@ const Login = (props)=>{
             })
             .then(data=>data.json())
             .then(json=>{
-                console.log(json.user.username);
-                props.home(json.user.username);
-                props.updateToken(json.sessionToken);
-                // fetch(`${APIURL}/advLog/advisorInfo`,{
-                //     method:"GET",
-                //     headers: new Headers({
-                //         "Content-Type": "application/json",
-                //         "Authorization":json.sessionToken
-                //     })
-                // })
-                // .then(data=>{
-                //     return data.json();
-                // })
-                // .then(mydata=>{
-                //     //console.log(mydata.data.length);mydata.data[0].FirstName
-                //     mydata.data.length>0?props.home(mydata.data[0].FirstName):props.home("HOME");
-                //     // console.log("This is testing");
-                //     //console.log(mydata.data[0].FirstName);
-                //    props.updateDisplay(mydata.data.length);
-                //    props.updateToken(json.sessionToken);
-                // })
+                fetch(`${APIURL}/advLog/advisorInfo`,{
+                    method:"GET",
+                    headers: new Headers({
+                        "Content-Type": "application/json",
+                        "Authorization":json.sessionToken
+                    })
+                })
+                .then(data=>{
+                    return data.json();
+                })
+                .then(mydata=>{
+                    //console.log(mydata.data.length);mydata.data[0].FirstName
+                    mydata.data.length>0?props.home(mydata.data[0].FirstName):props.home("HOME");
+                    // console.log("This is testing");
+                    //console.log(mydata.data[0].FirstName);
+                   props.updateDisplay(mydata.data.length);
+                   props.updateToken(json.sessionToken);
+                })
             })
         }
     }

@@ -89,9 +89,6 @@ const Signup = (props)=>{
                                 return data.json();
                             })
                             .then(json=>{
-                                //props.updateToken(json.sessionToken);
-                                // localStorage.setItem("token",json.sessionToken);
-                                //fetching happening too quickly for heroku to keep up. 
                                 fetch(`${APIURL}/advLog/advisorInfo`,{
                                     method:"GET",
                                     headers: new Headers({
@@ -104,8 +101,8 @@ const Signup = (props)=>{
                                 })
                                 .then(mydata=>{
                                     console.log(mydata.data.length);
-                                //    props.updateDisplay(mydata.data.length)
-                                //    props.updateToken(json.sessionToken);
+                                   props.updateDisplay(mydata.data.length)
+                                   props.updateToken(json.sessionToken);
                                 })
                 
                             })
