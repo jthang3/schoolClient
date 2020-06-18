@@ -54,6 +54,7 @@ function App() {
     const showReturn = ()=>{
     if(sessionToken === localStorage.getItem("token")){
       if(display === undefined){
+        console.log("THis is fucking working");
         return(
         <DisplayMe updateLog = {updateLog} updateDisplay = {updateDisplay} updateToken = {updateToke} sessionToken = {sessionToken}/>
         )
