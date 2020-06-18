@@ -5,13 +5,12 @@ import Auth from "./auth/Auth"
 import Header from "./Navigation";
 import {BrowserRouter as Router} from "react-router-dom";
 import AdvisorSignUpForm from "./auth/AdvisorSignUpForm";
-import DisplayMe from "./auth/Display";
 //import StudentSignUpForm from "./components/Student/StudentSignUpForm";
 function App() {
   const [sessionToken,setSessionToken] = useState("");
   const [user,setUser] = useState("HOME");
   const [login,setLogin] = useState("LOGIN");
-  const [display,setDisplay] = useState(undefined);
+  const [display,setDisplay] = useState(0);
   const [person,setPerson] = useState("");
 
   useEffect(()=>{

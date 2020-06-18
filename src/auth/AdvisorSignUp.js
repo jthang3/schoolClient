@@ -18,6 +18,7 @@ const Signup = (props)=>{
     //const [dropdownOpen,setDropdownOpen] = useState(false);
     props.updateLog("LOGIN");
     props.updatePerson("");
+    props.updateDisplay(0);
     // const result = ()=>{
     //     return(
     //         <Dropdown className = "container" isOpen={dropdownOpen} toggle={toggle}>
