@@ -24,7 +24,7 @@ const Student = (props)=>{
         fetchStudent();
     },[]);
     return(
-        <Row>
+        <Row style = {{marginTop:"5%"}}>
             <StudentTable student = {student} fetchStudent = {fetchStudent} token = {props.sessionToken}/>
         </Row>
     )

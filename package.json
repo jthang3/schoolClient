@@ -2,8 +2,8 @@
   "name": "school",
   "version": "0.1.0",
   "private": true,
-  "engines":{
-    "node":"12.16.0"
+  "engines": {
+    "node": "12.16.0"
   },
   "dependencies": {
     "@material-ui/core": "^4.10.2",
@@ -12,6 +12,7 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "bootstrap": "^4.5.0",
+    "mdbreact": "^4.27.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",

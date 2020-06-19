@@ -20,7 +20,7 @@ const handleSubmit = (e)=>{
     .then(json=>{
         setSubject("");
         setRoom("");
-        setCapacity(0);
+        setCapacity();
         alert("Classes added");
     })
 }

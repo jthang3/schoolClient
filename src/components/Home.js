@@ -37,7 +37,7 @@ const Home = (props)=>{
         fetchAdvisor();
     },[]);
     return(
-        <Row>
+        <Row style = {{marginTop:"5%"}}>
             <AdvisorTable advisor = {advisor} fetchAdvisor = {fetchAdvisor} editUpdateAdvisor = {editUpdateAdvisor}
             updateOn = {updateOn} updateOff = {updateOff} token = {props.sessionToken}/>
             {updateActive?<AdvisorEdit advisorToUpdate = {advisorToUpdate} updateOff = {updateOff} token = {props.sessionToken}

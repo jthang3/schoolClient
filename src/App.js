@@ -5,6 +5,7 @@ import Auth from "./auth/Auth"
 import Header from "./Navigation";
 import {BrowserRouter as Router} from "react-router-dom";
 import AdvisorSignUpForm from "./auth/AdvisorSignUpForm";
+// import { MDBContainer, MDBFooter } from "mdbreact";
 //import StudentSignUpForm from "./components/Student/StudentSignUpForm";
 function App() {
   const [sessionToken,setSessionToken] = useState("");
@@ -40,10 +41,16 @@ function App() {
     setLogin(log);
   }
 
-  // const protectedViews = ()=>{
-  //   return(
-  //     setSessionToken === localStorage.getItem("token")?
-  //   )
+  // const footerPage = () =>{
+  //   return (
+  //     <MDBFooter color="white" className="font-small pt-4 mt-4">
+  //       <div className="footer-copyright text-center py-3">
+  //         <MDBContainer fluid>
+  //           &copy; {new Date().getFullYear()} Copyright: John Lyin
+  //         </MDBContainer>
+  //       </div>
+  //     </MDBFooter>
+  //   );
   // }
   const updateToke = (newToken)=>{
     localStorage.setItem("token",newToken);
