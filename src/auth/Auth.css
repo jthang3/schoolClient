@@ -5,6 +5,7 @@ select{
 .authForm{
     width: 40%;
     margin:auto;
+    margin-top: 2%;
     color:white;
 }
 .container{
@@ -21,4 +22,7 @@ select{
 }
 .account{
     text-align: center;
+}
+.formMe{
+    margin-top: 8%;
 }

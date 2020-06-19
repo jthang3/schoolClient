@@ -46,18 +46,21 @@ const Login = (props)=>{
     }
     props.updateLog("SIGNUP");
     return(
-            <div className = "authForm">
+            <div className = "authForm formMe">
                 <Form onSubmit = {handleSubmit}autoComplete="off">
-                    <FormGroup>
-                        <Label htmlFor = "username">Username</Label>
-                        <Input name = "username" value = {username} onChange = {e=>setUsername(e.target.value)}type = "text"/>
-                    </FormGroup>
-                    <FormGroup>
-                        <Label htmlFor = "password">Password</Label>
-                        <Input name = "password" value = {password} onChange = {e=>setPassword(e.target.value)}type = "password"/>
-                        {message}
-                    </FormGroup>
-                    <Button className = "myBtn"type = "submit">Log in</Button>
+                    <fieldset>
+                        <legend>LOGIN</legend>
+                        <FormGroup>
+                            <Label htmlFor = "username">Username</Label>
+                            <Input name = "username" value = {username} onChange = {e=>setUsername(e.target.value)}type = "text"/>
+                        </FormGroup>
+                        <FormGroup>
+                            <Label htmlFor = "password">Password</Label>
+                            <Input name = "password" value = {password} onChange = {e=>setPassword(e.target.value)}type = "password"/>
+                            {message}
+                        </FormGroup>
+                        <Button className = "myBtn"type = "submit">Log in</Button>
+                    </fieldset>
                 </Form>
             </div>
         )
