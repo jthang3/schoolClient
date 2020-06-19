@@ -25,12 +25,15 @@ const SiteBar = (props)=>{
     const classes = useStyles();
     return(
         <div>
+            <style>
+                @import url('https://fonts.googleapis.com/css2?family=Sriracha&display=swap');
+            </style>
             <div>
-                <ul className = {classes.perfect}>
-                    <li className = "changeMe"><Link to = "/myInfo">Home</Link></li>
-                    <li className = "changeMe"><Link to = "/class">Class</Link></li>
-                    <li className = "changeMe"><Link to = "/students">Students</Link></li>
-                </ul>
+                <div className = {classes.perfect}>
+                    <li className = "changeMe"><Link style = {{color:"white",fontFamily: 'Sriracha',fontSize:"40px"}} to = "/myInfo">Home</Link></li>
+                    <li className = "changeMe"><Link style = {{color:"white",fontFamily: 'Sriracha',fontSize:"40px"}} to = "/class">Class</Link></li>
+                    <li className = "changeMe"><Link style = {{color:"white",fontFamily: 'Sriracha',fontSize:"40px"}} to = "/students">Students</Link></li>
+                </div>
             </div>
             <div>
                 <Switch>

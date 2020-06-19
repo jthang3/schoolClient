@@ -144,7 +144,7 @@ const Signup = (props)=>{
             <Form onSubmit = {handleSubmit}autoComplete="off">
                 <FormGroup>
                     <Label htmlFor = "username">Username</Label>
-                    <Input name = "username" value = {username} onChange = {e=>setUsername(e.target.value)} type = "text"/>
+                    <Input name = "username" value = {username} onChange = {e=>setUsername(e.target.value)} type = "text" pattern = ".{4,}"/>
                     {message}<br/>
                     <Label htmlFor = "password">Password</Label>
                     <Input name = "password" value = {password} onChange = {e=>setPassword(e.target.value)}type = "password"/>

@@ -35,7 +35,7 @@ const Classes = (props) =>{
        fetchClasses();
    },[]);
    return(
-    <Container style = {{background:"linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)"}}>
+    <Container style = {{background:"linear-gradient(90deg, rgba(9,9,121,1) 11%, rgba(2,0,36,1) 77%)"}}>
     <Row>
             {/*Create component will go here */}
             <ClassCreate fetchClasses = {fetchClasses} sessionToken = {props.sessionToken}/>

@@ -139,7 +139,6 @@ const Signup = (props)=>{
         <div className = "authForm">
           <div>
             <Row>{result()}</Row>
-            <h4>Advisor Sign up</h4>
             <Form onSubmit = {handleSubmit}autoComplete="off">
                 <FormGroup>
                     <Label htmlFor = "username">Username</Label>

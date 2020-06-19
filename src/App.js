@@ -75,7 +75,6 @@ function App() {
     <div className = "centerMe">
       <Router>
         <Header clearToken = {clearToken} user = {user}log = {login} updateLog = {updateLog}/>
-        <h1 id = "code">Coding bootcamp</h1>
         {updatedView()}
       </Router>
     </div>
