@@ -14,21 +14,25 @@ const useStyles = makeStyles((theme) => ({
     title: {
       flexGrow: 1,
     },
+    perfect:{
+        display:"flex",
+        justifyContent:"space-around"
+    }
     
   }));
 
 const SiteBar = (props)=>{
-    //const classes = useStyles();
+    const classes = useStyles();
     return(
         <div>
-            <div className = "sidebar-list-styling">
-                <ul className = "sidebar-list-styling">
+            <div>
+                <ul className = {classes.perfect}>
                     <li className = "changeMe"><Link to = "/myInfo">Home</Link></li>
                     <li className = "changeMe"><Link to = "/class">Class</Link></li>
                     <li className = "changeMe"><Link to = "/students">Students</Link></li>
                 </ul>
             </div>
-            <div className = "sitebar-route">
+            <div>
                 <Switch>
                     <Route exact path = "/Login1/"><Welcome/></Route>
                     <Route exact path = "/myInfo"><Home sessionToken = {props.sessionToken}/></Route>

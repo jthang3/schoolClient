@@ -1,5 +1,5 @@
 import React,{useState} from "react";
-import {Button,Form,FormGroup,Label,Input} from "reactstrap";
+import {Button,Form,FormGroup,Label,Input,Col,Row} from "reactstrap";
 import APIURL from "../helpers/environment";
 import Sitebar from "../components/Sitebar";
 
@@ -88,36 +88,45 @@ import Sitebar from "../components/Sitebar";
                     !dob?setDobMessage("DOB must be provided"):setDobMessage("");
                     !adv?setAdvMessage("advisor id must be provided"):setAdvMessage("");
                     !myclass?SetMyclassMessage("Class ID must be provided"):SetMyclassMessage("");
-                    if(firstName && lastName && major && dob && adv && myclass){
-                    fetch(`${APIURL}/student/studentInfo`,{
-                        method:"POST",
-                        body:JSON.stringify({user:{firstName:firstName,lastName:lastName,major:major,dob:dob,adv:adv,classId:myclass}}),
-                        headers: new Headers({
-                            "Content-Type":"application/json",
-                            "Authorization":props.sessionToken
+
+                        if(firstName && lastName && major && dob && adv && myclass){
+                        fetch(`${APIURL}/student/studentInfo`,{
+                            method:"POST",
+                            body:JSON.stringify({user:{firstName:firstName,lastName:lastName,major:major,dob:dob,adv:adv,classId:myclass}}),
+                            headers: new Headers({
+                                "Content-Type":"application/json",
+                                "Authorization":props.sessionToken
+                            })
                         })
-                    })
-                    .then(data=>data.json())
-                    .then(json=>{
-                        props.updateUser(firstName);
-                        props.updateDisplay(json.data.length);
-                        props.updateToken(props.sessionToken);
-                    })
-                }
+                        .then(data=>data.json())
+                        .then(json=>{
+                            props.updateUser(firstName);
+                            props.updateDisplay(json.data.length);
+                            props.updateToken(props.sessionToken);
+                        })
+                    }
                 }
                 return(
                    <div className = "authForm">
                        <Form onSubmit = {handleSubmit}>
-                           <FormGroup>
-                               <Label for = "first">First Name</Label>
-                               <Input name = "first" value = {firstName} onChange ={e=>setFirstName(e.target.value)}type = "text" placeholder = "first name"/>
-                               {firstNameMessage}
-                           </FormGroup>
-                           <FormGroup>
-                               <Label for = "last">Last Name</Label>
-                               <Input name = "last" value = {lastName} onChange = {e=>setLastName(e.target.value)}type = "text" placeholder = "last name"/>
-                               {lastNameMessage}
-                           </FormGroup>
+                           <Row form>
+                                <Col md = {6}>
+
+                                    <FormGroup>
+                                        <Label for = "first">First Name</Label>
+                                        <Input name = "first" value = {firstName} onChange ={e=>setFirstName(e.target.value)}type = "text" placeholder = "first name"/>
+                                        {firstNameMessage}
+                                    </FormGroup>
+                                </Col>
+                                <Col md = {6}>
+
+                                <FormGroup>
+                                    <Label for = "last">Last Name</Label>
+                                    <Input name = "last" value = {lastName} onChange = {e=>setLastName(e.target.value)}type = "text" placeholder = "last name"/>
+                                    {lastNameMessage}
+                                </FormGroup>
+                                </Col>
+                           </Row>
                            <FormGroup>
                                <Label for = "Major">Major</Label>
                                <Input name = "Major" value = {major} onChange = {e=>setMajor(e.target.value)}type = "select">
@@ -130,19 +139,27 @@ import Sitebar from "../components/Sitebar";
                            </FormGroup>
                            <FormGroup>
                                <Label for = "dob">DOB</Label>
-                               <Input name = "dob" value = {dob} onChange = {e=>setDob(e.target.value)}type = "text"/>
+                               <Input name = "dob" value = {dob} onChange = {e=>setDob(e.target.value)}type = "date"/>
                                {dobMessage}
                            </FormGroup>
-                           <FormGroup>
-                               <Label for = "adv">Advisor ID</Label>
-                               <Input name = "adv" value = {adv} onChange = {e=>setAdv(e.target.value)}type = "number"/>
-                               {advMessage}
-                           </FormGroup>
-                           <FormGroup>
-                               <Label for = "class">DOB</Label>
-                               <Input name = "class" value = {myclass} onChange = {e=>SetMyclass(e.target.value)}type = "number"/>
-                               {myclassMessage}
-                           </FormGroup>
+                           <Row form>
+                                <Col md = {6}>
+
+                                    <FormGroup>
+                                        <Label for = "adv">Advisor ID</Label>
+                                        <Input name = "adv" value = {adv} onChange = {e=>setAdv(e.target.value)}type = "number"/>
+                                        {advMessage}
+                                    </FormGroup>
+                                </Col>
+                                <Col md = {6}>
+
+                                    <FormGroup>
+                                        <Label for = "class">Class ID</Label>
+                                        <Input name = "class" value = {myclass} onChange = {e=>SetMyclass(e.target.value)}type = "number"/>
+                                        {myclassMessage}
+                                    </FormGroup>
+                                </Col>
+                           </Row>
                            <Button className = "myBtn" type = "submit">Sign up</Button>
                        </Form>
                    </div>
@@ -153,7 +170,7 @@ import Sitebar from "../components/Sitebar";
         else{
             if(props.person === "student"){
                 return(
-                    <h1>Form submitted. Will update this site later</h1>
+                    <h1 style = {{color:"white",textAlign:"center"}}>Form submitted. Will update this site later</h1>
                 )
             }
             else{

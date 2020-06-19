@@ -32,9 +32,8 @@ const AdvisorTable = (props) =>{
     return(
         
     <>
-        <h3 style = {{color:"black"}}>My Information</h3>
-            <hr/>
-            <Table striped>
+        <h3 style = {{color:"white"}}>My Information</h3>
+            <Table striped style ={{color:"white",backgroundColor:"black"}}>
                 <thead>
                     <tr>
                         <th>#</th>

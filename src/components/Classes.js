@@ -35,16 +35,14 @@ const Classes = (props) =>{
        fetchClasses();
    },[]);
    return(
-    <Container>
+    <Container style = {{background:"linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)"}}>
     <Row>
-        <Col md = "3">
             {/*Create component will go here */}
             <ClassCreate fetchClasses = {fetchClasses} sessionToken = {props.sessionToken}/>
-        </Col>
-        <Col md = "9">
+        </Row>
+        <Row className = "moveMe">
             <ClassTable classes = {classes} fetchClasses = {fetchClasses} sessionToken = {props.sessionToken} editUpdateClass = {editUpdateClass}
             updateOn = {updateOn}/>
-        </Col>
         {updateActive?<ClassEdit classUpdate = {classUpdate} updateOff = {updateOff} sessionToken = {props.sessionToken}
         fetchClasses = {fetchClasses}/>:null}
     </Row>

@@ -78,34 +78,51 @@ const Signup = (props)=>{
                         setPasswordResult("Your password must included at least one of !,@,or #");
                     }
                     else{
-                        fetch(`${APIURL}/user/signup`,{
-                            method: "POST",
-                            body:JSON.stringify({user:{username:username,password:password}}),
-                            headers: new Headers({
-                                "Content-Type": "application/json"
-                            })
-                        })
-                            .then(data=>{
-                                return data.json();
-                            })
-                            .then(json=>{
-                                fetch(`${APIURL}/student/info`,{
-                                    method:"GET",
-                                    headers: new Headers({
-                                        "Content-Type": "application/json",
-                                        "Authorization":json.sessionToken
-                                    })
+                        let condition;
+                            var str = username; 
+                            var res = str.match(/[a-zA-Z]/g);
+                            if(res){
+                                res = str.match(/[0-9]/g);
+                                if(res){
+                                condition = true;
+                                }
+                                else{
+                                condition = false;
+                                setMessage("Must include at least one number and one alphabet");
+                                }
+                            
+                            }
+                        if(condition){
+                            setMessage("");
+                            fetch(`${APIURL}/user/signup`,{
+                                method: "POST",
+                                body:JSON.stringify({user:{username:username,password:password}}),
+                                headers: new Headers({
+                                    "Content-Type": "application/json"
                                 })
+                            })
                                 .then(data=>{
                                     return data.json();
                                 })
-                                .then(mydata=>{
-                                    //console.log(mydata.data.length);
-                                   props.updateDisplay(mydata.data.length)
-                                   props.updateToken(json.sessionToken);
+                                .then(json=>{
+                                    fetch(`${APIURL}/student/info`,{
+                                        method:"GET",
+                                        headers: new Headers({
+                                            "Content-Type": "application/json",
+                                            "Authorization":json.sessionToken
+                                        })
+                                    })
+                                    .then(data=>{
+                                        return data.json();
+                                    })
+                                    .then(mydata=>{
+                                        //console.log(mydata.data.length);
+                                       props.updateDisplay(mydata.data.length)
+                                       props.updateToken(json.sessionToken);
+                                    })
+    
                                 })
-
-                            })
+                        }
                             
                     }
                  }

@@ -1,6 +1,7 @@
 
   ul{
     list-style-type: none;
+    color:white;
   }
   /*sidebar*/
   .sidebar-list-styling{
@@ -30,6 +31,8 @@
   }
   .colorMe{
       color:black;
+      width:90%;
+      margin:auto;
   }
   .row{
       padding-left: 20px;
@@ -40,5 +43,8 @@
   }
   .changeMe{
     display:inline-block;
+  }
+  .moveMe{
+    margin-top: 5%;
   }
  

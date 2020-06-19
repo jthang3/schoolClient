@@ -15,7 +15,6 @@ const StudentTable = (props) =>{
                         <td>{student.Major}</td>
                         <td>{student.DOB}</td>
                         <td>{student.classId}</td>
-                        <td><Button color = "danger">Delete</Button></td>
                     </tr>
                 )
             }))
@@ -26,9 +25,9 @@ const StudentTable = (props) =>{
     }
     return(
     <>
-        <h3 style = {{color:"black"}}>My Student</h3>
-        <div style = {{overflowY:"scroll", height:"50vh"}}>
-            <Table striped>
+        <div style = {{overflowY:"scroll", height:"50vh",width:"100%"}}>
+        <h3 style = {{color:"white"}}>My Student</h3>
+            <Table striped style = {{background:"black",color:"white"}}>
                 <thead>
                     <tr>
                         <th>First Name</th>

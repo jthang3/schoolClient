@@ -44,7 +44,7 @@ const AdvisorEdit = (props)=>{
                     </FormGroup>
                     <FormGroup>
                         <Label htmlFor = "email">Email</Label>
-                        <Input name = "email" value = {email} type = "text" onChange = {e=>setEmail(e.target.value)}/>
+                        <Input name = "email" value = {email} type = "email" onChange = {e=>setEmail(e.target.value)}/>
                     </FormGroup>
                     <Button type = "submit">Update the Advisor!</Button>	&nbsp;	&nbsp;	&nbsp;
                     <Button type = "button" onClick = {cancel}>Cancel</Button>

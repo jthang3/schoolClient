@@ -27,6 +27,7 @@ const classTable = (props) =>{
             return (classes.map((myClass,index)=>{
                 return(
                     <tr key = {index}>
+                        <td>{myClass.id}</td>
                         <td>{myClass.Subject}</td>
                         <td>{myClass.RoomNum}</td>
                         <td>{myClass.Capacity}</td>
@@ -47,12 +48,12 @@ const classTable = (props) =>{
  
     return(
         <>
-            <h3 style = {{color:"black"}}>List of Classes</h3>
-            <div style = {{overflowY:"scroll", height:"50vh"}}>
+            <div style = {{overflowY:"scroll", height:"50vh",width:"100%"}}>
 
                 <Table striped>
                     <thead>
                         <tr>
+                            <th>#</th>
                             <th>Subject</th>
                             <th>Room Number</th>
                             <th>Capacity</th>

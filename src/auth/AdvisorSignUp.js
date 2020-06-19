@@ -78,34 +78,51 @@ const Signup = (props)=>{
                         setPasswordResult("Your password must included at least one of !,@,or #");
                     }
                     else{
-                        fetch(`${APIURL}/user/advisorSignup`,{
-                            method: "POST",
-                            body:JSON.stringify({user:{username:username,password:password}}),
-                            headers: new Headers({
-                                "Content-Type": "application/json"
-                            })
-                        })
-                            .then(data=>{
-                                return data.json();
-                            })
-                            .then(json=>{
-                                fetch(`${APIURL}/advLog/advisorInfo`,{
-                                    method:"GET",
-                                    headers: new Headers({
-                                        "Content-Type": "application/json",
-                                        "Authorization":json.sessionToken
-                                    })
+                        let condition;
+                            var str = username; 
+                            var res = str.match(/[a-zA-Z]/g);
+                            if(res){
+                                res = str.match(/[0-9]/g);
+                                if(res){
+                                condition = true;
+                                }
+                                else{
+                                condition = false;
+                                setMessage("Must include at least one number and one alphabet");
+                                }
+                            
+                            }
+                        if(condition){
+                            setMessage("");
+                            fetch(`${APIURL}/user/advisorSignup`,{
+                                method: "POST",
+                                body:JSON.stringify({user:{username:username,password:password}}),
+                                headers: new Headers({
+                                    "Content-Type": "application/json"
                                 })
+                            })
                                 .then(data=>{
                                     return data.json();
                                 })
-                                .then(mydata=>{
-                                    console.log(mydata.data.length);
-                                   props.updateDisplay(mydata.data.length)
-                                   props.updateToken(json.sessionToken);
+                                .then(json=>{
+                                    fetch(`${APIURL}/advLog/advisorInfo`,{
+                                        method:"GET",
+                                        headers: new Headers({
+                                            "Content-Type": "application/json",
+                                            "Authorization":json.sessionToken
+                                        })
+                                    })
+                                    .then(data=>{
+                                        return data.json();
+                                    })
+                                    .then(mydata=>{
+                                        console.log(mydata.data.length);
+                                       props.updateDisplay(mydata.data.length)
+                                       props.updateToken(json.sessionToken);
+                                    })
+                    
                                 })
-                
-                            })
+                        }
                     }
                  }
              }
@@ -126,7 +143,7 @@ const Signup = (props)=>{
             <Form onSubmit = {handleSubmit}autoComplete="off">
                 <FormGroup>
                     <Label htmlFor = "username">Username</Label>
-                    <Input name = "username" value = {username} onChange = {e=>setUsername(e.target.value)} type = "text"/>
+                    <Input name = "username" value = {username} onChange = {e=>setUsername(e.target.value)} type = "text" pattern = ".{4,}"/>
                     {message}<br/>
                     <Label htmlFor = "password">Password</Label>
                     <Input name = "password" value = {password} onChange = {e=>setPassword(e.target.value)}type = "password"/>
